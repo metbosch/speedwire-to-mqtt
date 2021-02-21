@@ -1,0 +1,14 @@
+{
+  "address": "239.12.255.254",
+  "port": 9522,
+  "period": 60,
+  "mqtt": {
+    "url": "127.0.0.1",
+    "port": 1883,
+    "topic": "tele/energymetter/DATA",
+    "options": {
+      "username": "",
+      "password": ""
+    }
+  }
+}

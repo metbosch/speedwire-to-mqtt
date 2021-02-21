@@ -1,0 +1,30 @@
+{
+  "name": "speedwire-to-mqtt",
+  "version": "0.1.0",
+  "description": "Relay to forward speedwire multicast messages to mqtt broker",
+  "main": "index.js",
+  "dependencies": {
+    "config": "^3.3.3",
+    "mqtt": "^4.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metbosch/speedwire-to-mqtt.git"
+  },
+  "keywords": [
+    "mqtt",
+    "speedwire",
+    "sma",
+    "sunnyportal"
+  ],
+  "author": "metbosch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/metbosch/speedwire-to-mqtt/issues"
+  },
+  "homepage": "https://github.com/metbosch/speedwire-to-mqtt#readme"
+}
