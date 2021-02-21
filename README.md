@@ -23,7 +23,7 @@ The message contains a JSON with the following format information:
 ## Docker
 
 The service can be run using Docker.
-The image can be found in [Docker HUB](https://hub.docker.com/r/metbosch/speedwire-to-mqtt).
+The image can be found at [Docker HUB](https://hub.docker.com/r/metbosch/speedwire-to-mqtt).
 Example to run the image with a custom config file (`home.config.json`):
 
 ```
