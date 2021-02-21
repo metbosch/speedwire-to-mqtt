@@ -19,3 +19,13 @@ The message contains a JSON with the following format information:
  - grid_wh. Grid energy consumption counter from last received message in Wh.
  - feed_w. Average power feeded to grid during the period in W.
  - feed_wh. Grid energy feed counter from last received message in Wh.
+
+## Docker
+
+The service can be run using Docker.
+The image can be found in [Docker HUB](https://hub.docker.com/r/metbosch/speedwire-to-mqtt).
+Example to run the image with a custom config file (`home.config.json`):
+
+```
+docker run -it --rm --net host -v home.config.json:/usr/src/app/config/home.json -e NODE_CONFIG_ENV=home metbosch/speedwire-to-mqtt
+```
