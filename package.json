@@ -1,6 +1,6 @@
 {
   "name": "speedwire-to-mqtt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Relay to forward speedwire multicast messages to mqtt broker",
   "main": "index.js",
   "dependencies": {
