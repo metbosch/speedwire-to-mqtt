@@ -2,7 +2,7 @@ const config = require('config');
 const dgram = require('dgram');
 const mqtt = require('mqtt');
 
-const updClient = dgram.createSocket('udp4');
+const udpClient = dgram.createSocket('udp4');
 const mqttClient = mqtt.connect('mqtt://' + config.get('mqtt.url'), config.get('mqtt.options'));
 const periodPublish = config.get('period') * 1000;
 var handlePublish = undefined;
@@ -13,7 +13,7 @@ var feedEnergy = undefined;
 
 function onError(err) {
   clearTimeout(handlePublish);
-  updClient.close();
+  udpClient.close();
 }
 
 function mqttConnect(err) {
@@ -47,9 +47,9 @@ function mqttPublish() {
 }
 
 function udpConnect() {
-  const address = updClient.address();
+  const address = udpClient.address();
   console.log(`listening ${address.address}:${address.port}`);
-  updClient.addMembership(config.get('address'));
+  udpClient.addMembership(config.get('address'));
 }
 
 function udpParse(msg, info) {
@@ -104,8 +104,8 @@ function udpParse(msg, info) {
   }
 }
 
-updClient.on('error', onError);
-updClient.on('message', udpParse);
-updClient.on('listening', udpConnect);
-updClient.bind(config.get('port'));
+udpClient.on('error', onError);
+udpClient.on('message', udpParse);
+udpClient.on('listening', udpConnect);
+udpClient.bind(config.get('port'));
 mqttClient.on('connect', mqttConnect);
