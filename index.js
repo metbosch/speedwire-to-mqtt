@@ -61,7 +61,7 @@ function udpParse(msg, info) {
                     msg[offset+1]*0x10000 + 
                     msg[offset+2]*0x100  +
                     msg[offset+3]) / 10);
-  if (value >= 0 && value < 100000) {
+  if (value >= 0 && value < 1000000) {
     gridPower.push(value);
   }
   
@@ -75,7 +75,7 @@ function udpParse(msg, info) {
                     msg[offset+5]*0x10000 + 
                     msg[offset+6]*0x100  +
                     msg[offset+7]) / 3600);
-  if (value >= 0 && value < 50000000) {
+  if (value >= 0 && value < 5000000000) {
     gridEnergy = value;
   }
   
@@ -85,7 +85,7 @@ function udpParse(msg, info) {
                     msg[offset+1]*0x10000 + 
                     msg[offset+2]*0x100  +
                     msg[offset+3]) / 10);
-  if (value >= 0 && value < 100000) {
+  if (value >= 0 && value < 1000000) {
     feedPower.push(value);
   }
   
@@ -99,7 +99,7 @@ function udpParse(msg, info) {
                     msg[offset+5]*0x10000 + 
                     msg[offset+6]*0x100  +
                     msg[offset+7]) / 3600);
-  if (value >= 0 && value < 5000000) {
+  if (value >= 0 && value < 5000000000) {
     feedEnergy = value;
   }
 }
