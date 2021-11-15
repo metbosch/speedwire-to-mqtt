@@ -30,10 +30,10 @@ function mqttPublish() {
     const meanFeedPower = feedPower.reduce((a, b) => a+b, 0)/feedPower.length;
     const data = {
       samples: samples,
-      grid_w: meanGridPower.toString(),
-      grid_wh: gridEnergy.toString(),
-      feed_w: meanFeedPower.toString(),
-      feed_wh: feedEnergy.toString()
+      grid_w: meanGridPower,
+      grid_wh: Number(gridEnergy),
+      feed_w: meanFeedPower,
+      feed_wh: Number(feedEnergy)
     };
     mqttClient.publish(config.get('mqtt.topic'), JSON.stringify(data));
 
@@ -70,7 +70,7 @@ function udpParse(msg, info) {
   /* to get the actual grid consumption in W we need the offset 0.1.4.0 */
   offset = msg.indexOf("00010400", REGS_OFFSET, "hex");
   if (offset != -1) {
-    value = msg.readInt32BE(offset + 4)/3600;
+    value = msg.readInt32BE(offset + 4)/10;
     if (value >= 0 && value < MAX_POWER) {
       gridPower.push(value);
     }
@@ -88,7 +88,7 @@ function udpParse(msg, info) {
   /* to get the actual grid feed in W we need the offset 0.2.4.0 */
   offset = msg.indexOf("00020400", REGS_OFFSET, "hex");
   if (offset != -1) {
-    value = msg.readInt32BE(offset + 4)/3600;
+    value = msg.readInt32BE(offset + 4)/10;
     if (value >= 0 && value < MAX_POWER) {
       feedPower.push(value);
     }
